@@ -1,0 +1,13 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main, 'release/**']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "building ${{ github.ref }}" && grep TargetFramework src/SparkTest.Lib/SparkTest.Lib.csproj
