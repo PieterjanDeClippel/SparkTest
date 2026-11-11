@@ -7,7 +7,10 @@ mergeQueue:
 # MintPlayer package versioning (added by the onboarding pull request). The publish workflow tags every release
 # `<package id>/v<version>`; the commented lines are the defaults.
 versioning:
-  lines: {}                          # release lines, release/{ecosystem}-{major}.x: packages release only from them
+  lines:                             # release lines, release/{ecosystem}-{major}.x: packages release only from them
+    current: promote                 # a maintainer's `/release` moves each current line to the newest commit ci.yml passed
+    trigger: manual
+    workflow: ci.yml
   mode: server                       # server | local: local runs the engine on the runner, without the app
 #   releaseBranches: ["release/*.x"]
 #   ignore: ["**/*.md"]              # changed files that never release a package
