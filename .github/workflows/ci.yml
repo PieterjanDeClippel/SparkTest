@@ -32,4 +32,6 @@ jobs:
       # Sandbox: packs only, nothing is pushed to a registry.
       # No --no-build: the versions are decided after the tests, so pack builds again to stamp them into the
       # assemblies (--no-build also skips restore, which leaves the nuspec's dependency versions stale).
-      - run: dotnet pack src/SparkTest.Lib/SparkTest.Lib.csproj -c Release -o artifacts
+      # With release lines the default branch tags nothing, so only a line's run has a version to pack.
+      - if: startsWith(github.ref, 'refs/heads/release/')
+        run: dotnet pack src/SparkTest.Lib/SparkTest.Lib.csproj -c Release -o artifacts
