@@ -11,3 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: echo "building ${{ github.ref }}" && grep TargetFramework src/SparkTest.Lib/SparkTest.Lib.csproj
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '11.0.x'
+          dotnet-quality: preview
+      # Sandbox: packs only, nothing is pushed to a registry.
+      - run: dotnet pack src/SparkTest.Lib/SparkTest.Lib.csproj -c Release -o artifacts
