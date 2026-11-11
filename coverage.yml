@@ -1,3 +1,9 @@
+# The merge queue (added by the onboarding pull request): dependency pull requests within your thresholds merge through
+# it, and your own pull requests can use it too (label `merge-queue`, or comment `/queue`).
+mergeQueue:
+  enabled: true
+  branches: [main, supported-lines]
+
 # MintPlayer package versioning (added by the onboarding pull request). The publish workflow tags every release
 # `<package id>/v<version>`; the commented lines are the defaults.
 versioning:
